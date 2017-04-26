@@ -1,7 +1,7 @@
 <?php
 include('login.php');
 if(isset($_SESSION['login_user'])){
-	header("location: home.html");
+	header("location: home.php");
 }
 ?>
 
@@ -47,7 +47,7 @@ if(isset($_SESSION['login_user'])){
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
@@ -79,7 +79,7 @@ if(isset($_SESSION['login_user'])){
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
+								<li><a href="index.php" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Buy<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li> 

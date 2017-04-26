@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login_user'])){
+	$_SESSION['user']='sell';
+	header("location: login.html");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,40 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Sign-Up | E-Shopper</title>
-	<script type="text/javascript">
-		function checker() {
-
-			var a=document.getElementById("password").value;
-			var b=document.getElementById("reenter").value;
-			if(a.length < 6){
-				document.getElementById("showMessage").innerHTML="Password must be 6 characters or more!";
-				return;
-			}
-			if(a.localeCompare(b)!=0){
-				document.getElementById("showMessage").innerHTML="Password does not match!";
-				return;
-			}
-			var data = new FormData();
-			data.append('name', document.getElementById("name").value);
-			data.append('email', document.getElementById("email").value);
-			data.append('password', document.getElementById("password").value);
-			xhttp= new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				console.log(this.readyState+" "+this.status+" "+xhttp.responseText);
-				if(this.readyState==4 && this.status==200){
-					if(xhttp.responseText.localeCompare("Success")==0){
-						window.location.replace("home.php");
-					}	
-					else
-					document.getElementById("showMessage").innerHTML=xhttp.responseText;
-				}
-			};
-			xhttp.open("POST","signup.php",true);
-			xhttp.send(data);
-		}
-		
-	</script>
+    <title>Sell | E-Shopper</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -46,6 +20,8 @@
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
+	<script src="img_input.js"></script>
+	<script src="price_check.js"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -132,39 +108,70 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 
-		
 
 
 
 
-  	
+
+	
+	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-5 col-sm-offset-3">
-				
-					<div class="signup-form">
-						<h2>New User Signup!</h2>
-						<form action="" onsubmit="return false;" method="POST" >
-							<p id="showMessage" style="color:red;"></p>
-							<input type="text" name="name" id="name" placeholder="Name"/>
-							<input type="email" name="email" id="email" placeholder="Email Address"/>
-							<input type="password" name="password" id="password" placeholder="Password"/>
-							<input type="password" id="reenter" placeholder="Re-enter Password"/>
-							<button type="submit" name="submit" onClick="checker()" class="btn btn-default">Signup</button><br><br><br><br><br><br>
-						</form>
+				<div class="col-sm-3">
+					
+				</div>
+
+				<div class="col-sm-6">
+					<div class="blog-post-area">
+						<h2 class="title text-center">Sell an item</h2>
+						<div class="single-blog-post">
+							
+							<form action="#">
+								<input type="file" name="pic" accept="image/jpeg, image/png, image/jpg" onchange="getimg(this);">
+								<img id="blah" src="#" style="max-height: 50%; max-width: 50%" alt="" />
+								<br><br>
+								<input type="text" placeholder="Title">
+								<br><br>
+								<select>
+										<option>Type*</option>
+										<option>Text Book</option>
+										<option>Story Book</option>
+										
+								</select>
+								<br><br>
+								
+								<select>
+										<option>Condition*</option>
+										<option>New</option>
+										<option>Used</option>
+										
+								</select>
+								<br><br>
+								<textarea name="message"  placeholder="Description" rows="7"></textarea>
+								<br><br>
+								<p>Price (Tk)</p>
+								<input name="someid" type="number" placeholder="Price (Tk)" onkeypress="return isNumberKey(event)"/>	
+								<label><input type="checkbox">Negotiable</label><br><br>		
+								<a class="btn btn-primary" href="">Continue</a>					
+							</form>
+						</div>
+						
+						<div class="pagination-area">
+							
+						</div>
 					</div>
 				</div>
 			</div>
-	
 		</div>
+	</section>
 	
 
 
 
 
 
-			
-	<footer id="footer"><!--Footer-->
+
+		<footer id="footer"><!--Footer-->
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
@@ -242,7 +249,8 @@
 	<script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/img_input.js"></script>
+	 <script src="js/price_check.js"></script>
+	
 </body>
-</html>		
-
-
+</html>

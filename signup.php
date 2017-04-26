@@ -2,6 +2,7 @@
 
 
 	//header('Access-Control-Allow-Origin: *');
+	session_start();
 	require_once('connect.php');
 	$number=0;
 	$name = trim($_POST['name']);
@@ -21,7 +22,6 @@
         $stmt = mysqli_prepare($dbc, $query);
         mysqli_stmt_bind_param($stmt, "sss", $name, $email, $password);
         mysqli_stmt_execute($stmt);
-	session_start();
 	$_SESSION['login_user']= $email; 
 	echo 'Success';
 	mysqli_stmt_close($stmt);

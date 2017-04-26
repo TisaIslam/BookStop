@@ -2,6 +2,7 @@
 
 
 	//header('Access-Control-Allow-Origin: *');
+	session_start();
 	$password = trim($_POST['password']);
 	$email= trim($_POST['email']);
     	$temp="";
@@ -17,7 +18,6 @@
 		echo 'Incorrect E-mail!';
 	else{
 		if(!strcmp($password,$temp)){
-			session_start();
 			$_SESSION['login_user']= $email; 
 			echo 'Success!';
 		}

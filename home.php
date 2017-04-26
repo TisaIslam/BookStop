@@ -1,10 +1,9 @@
 <?php
-include('login.php');
-if(isset($_SESSION['login_user'])){
-	header("location: home.html");
+session_start();
+if(!isset($_SESSION['login_user'])){
+	header("location: index.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +46,7 @@ if(isset($_SESSION['login_user'])){
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
@@ -57,7 +56,7 @@ if(isset($_SESSION['login_user'])){
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="logout.php"><i class="fa fa-lock"></i> LogOut</a></li>
 							</ul>
 						</div>
 					</div>
@@ -79,7 +78,7 @@ if(isset($_SESSION['login_user'])){
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
+								<li><a href="index.php" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Buy<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li> 

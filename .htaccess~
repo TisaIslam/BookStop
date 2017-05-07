@@ -1,16 +1,11 @@
 RewriteEngine on
-RewriteRule ^account$ account.html
 RewriteRule ^buy$ buy.html
 RewriteRule ^cart$ cart.html
 RewriteRule ^checkout$ checkout.html
 RewriteRule ^contact-us$ contact-us.html
-RewriteRule ^changeEMail$ changeEMail.html
-RewriteRule ^changePass$ changePass.html
 RewriteRule ^home$ home.php
 RewriteRule ^index$ index.php
 RewriteRule ^login$ login.html
-RewriteRule ^logout$ logout.php
-RewriteRule ^forgot$ forgot.html
 RewriteRule ^myproduct$ myproduct.html
 RewriteRule ^orderprocessed$ orderprocessed.html
 RewriteRule ^pending$ pending.html

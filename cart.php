@@ -2,7 +2,12 @@
 
 
 	require_once('connect.php');
-	
+	if(!isset($_COOKIE['debug']){
+		echo '<tr><td colspan="4">&nbsp;</td><td colspan="2"><table class="table table-condensed total-result"><tr><td>Total</td><td><span id="total">BDT 0</span></td></tr></table></td></tr>';
+
+
+	}
+	else{
 	$var="";
 	$pieces=explode(",",$_COOKIE['debug']);
 	for($x=0;$x<count($pieces);$x++){
@@ -31,6 +36,7 @@
 	}
 	$total='<tr><td colspan="4">&nbsp;</td><td colspan="2"><table class="table table-condensed total-result"><tr><td>Total</td><td><span id="total">BDT '.$price.'</span></td></tr></table></td></tr>';
 	echo $ret.$total;
+	}
         mysqli_close($dbc);
 
     

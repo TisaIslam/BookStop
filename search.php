@@ -5,6 +5,7 @@
 	$query="select * from sellitem where LOWER(title) LIKE LOWER('%".$search."%')";
         $result = mysqli_query($dbc, $query);
         $rows = array();
+	$ret="";
         while ($array = mysqli_fetch_row($result)) {
 		//$rows[] = $array;	
 		$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="350" height="auto" alt=""></a></td>';

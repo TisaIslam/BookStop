@@ -23,7 +23,7 @@
 	$i=1;
 	$price=0;
         while ($array = mysqli_fetch_row($result)) {
-		$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="200" height="auto" alt=""></a></td>';
+		$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="200" height="auto" style="max-height: 300px;" alt=""></a></td>';
 		$item2=	'<td class="cart_description"><h4><a href="">'.$array[3].'</a></h4><p>'.$array[6].'</p></td>';	
 		$item3='<td class="cart_price"><p>'.$array[4].'</p></td>';
 		$item4='<td class="cart_price"><p>'.$array[5].'</p></td>';

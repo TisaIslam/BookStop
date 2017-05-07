@@ -124,7 +124,7 @@
 						
 					</tbody>
 				</table>
-				<center><button type="submit" style="background: #5560f6; color:white" name="submit" onclick="location.href='checkout';" class="btn btn-default">Checkout</button></center>
+				<center><button type="submit" name="submit" onclick="location.href='checkout';" class="btn btn-default">Checkout</button></center>
 				
 			</div>
 		</div>

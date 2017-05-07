@@ -7,7 +7,7 @@
 	$ret='';
 	$i=1;
         while ($array = mysqli_fetch_row($result)) {
-		$item1='<div class="product-image-wrapper" ><div class="single-products"style ="float:left"><div class="productinfo text-center"> <img src="'.$array[2].'" alt="" />';
+		$item1='<div class="product-image-wrapper" ><div class="single-products"style ="float:left"><div class="productinfo text-center"> <img src="'.$array[2].'" alt="" style="height:200px;width:250px;"/>';
 		$pri=$array[7];
 		$str="TK ". (string)$pri;
 		$item2='<p>'.$str.'</p>';

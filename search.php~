@@ -8,7 +8,7 @@
 	$ret="";
         while ($array = mysqli_fetch_row($result)) {
 		//$rows[] = $array;	
-		$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="200" height="auto" alt=""></a></td>';
+		$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="350" height="auto" alt=""></a></td>';
 
 
 		$item2=	'<td class="cart_description"><h4><a href="#" style="color:blue" name="'.$array[0].'" onClick="detail(this.name)"> <u>'.$array[3].'</u></a></h4></td>';	

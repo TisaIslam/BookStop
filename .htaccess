@@ -1,0 +1,16 @@
+RewriteEngine on
+RewriteRule ^buy$ buy.html
+RewriteRule ^cart$ cart.html
+RewriteRule ^checkout$ checkout.html
+RewriteRule ^contact-us$ contact-us.html
+RewriteRule ^home$ home.php
+RewriteRule ^index$ index.php
+RewriteRule ^login$ login.html
+RewriteRule ^myproduct$ myproduct.html
+RewriteRule ^orderprocessed$ orderprocessed.html
+RewriteRule ^pending$ pending.html
+RewriteRule ^product-details$ product-details.html
+RewriteRule ^redirect$ redirect.html
+RewriteRule ^sell$ sell.php
+RewriteRule ^search$ search.html
+RewriteRule ^signup$ signup.html

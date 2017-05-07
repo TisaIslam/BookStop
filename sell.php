@@ -1,10 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['login_user'])){
-	$_SESSION['user']='sell';
-	header("location: login.html");
-}
-?>
+<?php include 'redirect.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +7,8 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sell | E-Shopper</title>
+	
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -20,8 +16,10 @@ if(!isset($_SESSION['login_user'])){
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-	<script src="img_input.js"></script>
-	<script src="price_check.js"></script>
+	<script src="js/img_input.js"></script>
+	<script src="js/price_check.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/option.js"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -33,7 +31,7 @@ if(!isset($_SESSION['login_user'])){
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
+<body onload="optionloader();">
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -49,18 +47,17 @@ if(!isset($_SESSION['login_user'])){
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
+							<a href="index"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
 					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
+						<div class="shop-menu pull-right" id="options">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="cart"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -82,25 +79,19 @@ if(!isset($_SESSION['login_user'])){
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Buy<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li><a href="#">Sell</a>
+								<li><a href="index" >Home</a></li>
+								<li><a href="buy" >Buy</a></li>
+								
+								<li><a href="sell" class="active">Sell</a>
                                     
                                 </li> 
-								<li><a href="contact-us.html">Contact Us</a></li>
+								<li><a href="contact-us">Contact Us</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" id="search" onkeypress="handle(event)" placeholder="Search"/>
 						</div>
 					</div>
 				</div>
@@ -126,33 +117,33 @@ if(!isset($_SESSION['login_user'])){
 						<h2 class="title text-center">Sell an item</h2>
 						<div class="single-blog-post">
 							
-							<form action="#">
-								<input type="file" name="pic" accept="image/jpeg, image/png, image/jpg" onchange="getimg(this);">
+							<form action="sell2.php"  method="POST" enctype="multipart/form-data">
+								<p id="showMessage" style="color:red;"></p>
+								<input type="file" name="pic" id="pic" accept="image/jpeg, image/png, image/jpg" onchange="getimg(this);" required>
 								<img id="blah" src="#" style="max-height: 50%; max-width: 50%" alt="" />
 								<br><br>
-								<input type="text" placeholder="Title">
+								<input name="txt" id="txt" type="text" placeholder="Title" required>
 								<br><br>
-								<select>
-										<option>Type*</option>
+								
+								<select name="btype" id="btype">
 										<option>Text Book</option>
 										<option>Story Book</option>
 										
 								</select>
 								<br><br>
 								
-								<select>
-										<option>Condition*</option>
+								<select name="cond" id="cond">
 										<option>New</option>
 										<option>Used</option>
 										
 								</select>
 								<br><br>
-								<textarea name="message"  placeholder="Description" rows="7"></textarea>
+								<textarea name="message" id="message"  placeholder="Description" rows="7"></textarea>
 								<br><br>
-								<p>Price (Tk)</p>
-								<input name="someid" type="number" placeholder="Price (Tk)" onkeypress="return isNumberKey(event)"/>	
-								<label><input type="checkbox">Negotiable</label><br><br>		
-								<a class="btn btn-primary" href="">Continue</a>					
+								<input name="price" id="price" type="number" placeholder="Price (Tk)" 										onkeypress="return isNumberKey(event)" required/>	
+								
+								<br><br><center><button type="submit" name="submit" class="btn 										btn-default" style="background: #5560f6; color:white">Submit Item</button></center>	
+					
 							</form>
 						</div>
 						
@@ -173,68 +164,17 @@ if(!isset($_SESSION['login_user'])){
 
 		<footer id="footer"><!--Footer-->
 		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-					
-				</div>
-			</div>
+			
 		</div>
 		
 		<div class="footer-widget">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Service</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Policies</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Refund Policy</a></li>
-								<li><a href="#">Billing System</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Store Location</a></li>
-								<li><a href="#">Affillate Program</a></li>
-								<li><a href="#">Copyright</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
-							</form>
-						</div>
-					</div>
-					
-				</div>
-			</div>
+			
 		</div>
 		
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2017 BookStop</p>
 				</div>
 			</div>
 		</div>

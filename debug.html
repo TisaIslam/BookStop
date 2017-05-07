@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/createcookie.js"></script>
+<script src="js/readcookie.js"></script>
+<script src="js/clearcookie.js"></script>
+<script type="text/javascript">
+		function checker() {
+					var x=document.getElementById("t1").value;
+					var y=document.getElementById("t2").value;
+					createCookie(x,y,1);
+					//eraseCookie(x);
+					document.getElementById("showMessage").innerHTML=readCookie(x);
+			
+		}
+		
+	</script>
+
+</head>
+<body>
+
+<form action="" onsubmit="return false;">
+  <p id="showMessage" style="color:red;"></p>
+  First name:<br>
+  <input type="text" id="t1" name="firstname" >
+  <br>
+  Last name:<br>
+  <input type="text" id="t2" name="lastname" >
+  <br><br>
+  <input type="submit" onClick="checker()" value="Submit">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+</body>
+</html>

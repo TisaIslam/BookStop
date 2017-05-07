@@ -1,7 +1,6 @@
 <?php
 
 
-	//header('Access-Control-Allow-Origin: *');
 	session_start();
 	require_once('connect.php');
 	$number=0;
@@ -18,12 +17,15 @@
 		echo 'This E-mail Is Already Registered!';
 		return;
 	}
+	else{
         $query = "INSERT INTO user (name, email, password) VALUES (?,?,?)";
         $stmt = mysqli_prepare($dbc, $query);
         mysqli_stmt_bind_param($stmt, "sss", $name, $email, $password);
         mysqli_stmt_execute($stmt);
 	$_SESSION['login_user']= $email; 
+	setcookie("debug", "", time() - 3600);
 	echo 'Success';
+	}
 	mysqli_stmt_close($stmt);
         mysqli_close($dbc);
 

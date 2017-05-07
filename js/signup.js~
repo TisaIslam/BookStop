@@ -1,0 +1,82 @@
+
+		function checker() {
+
+			var a=document.getElementById("password").value;
+			var b=document.getElementById("reenter").value;
+			var x=document.getElementById("name").value;
+			var y=document.getElementById("email").value;
+			if(x.length==0 || y.length==0){
+				document.getElementById("showMessage").innerHTML="Please give required information!";
+				return;
+			}
+			if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y))){  
+				document.getElementById("showMessage").innerHTML="Enter a valid email!";
+    				return ;
+			}	
+			if(a.length < 6){
+				document.getElementById("showMessage").innerHTML="Password must be 6 characters or more!";
+				return;
+			}
+			if(a.localeCompare(b)!=0){
+				document.getElementById("showMessage").innerHTML="Password does not match!";
+				return;
+			}
+			var data = new FormData();
+			data.append('name', document.getElementById("name").value);
+			data.append('email', document.getElementById("email").value);
+			data.append('password', document.getElementById("password").value);
+			xhttp= new XMLHttpRequest(); 
+			xhttp.onreadystatechange = function() {
+				console.log(this.readyState+" "+this.status+" "+xhttp.responseText);
+				if(this.readyState==4 && this.status==200){
+					if(xhttp.responseText.localeCompare("Success")==0){
+						//window.location.href="home";
+					}	
+					else
+					document.getElementById("showMessage").innerHTML=xhttp.responseText;
+				}
+			};
+			xhttp.open("POST","signup.php",true);
+			xhttp.send(data);
+		}
+
+
+
+
+
+
+
+		function checker2() {
+
+			var y=document.getElementById("email").value;
+			if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(y))){  
+				document.getElementById("showMessage").innerHTML="Enter a valid email!";
+    				return ;
+			}
+			var a=document.getElementById("password").value;
+			if(a.length < 6){
+				document.getElementById("showMessage").innerHTML="Password must be 6 characters or more!";
+				return;
+			}
+			var data = new FormData();
+			data.append('email', document.getElementById("email").value);
+			data.append('password', document.getElementById("password").value);
+			xhttp= new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				console.log(this.readyState+" "+this.status+" "+xhttp.responseText);
+				if(this.readyState==4 && this.status==200){
+					if(xhttp.responseText.localeCompare("Success!")==0){
+						window.location.href="home";
+					}
+					else if(xhttp.responseText.localeCompare("success0")==0){
+						window.location.href="sell";
+					}	
+					else
+					document.getElementById("showMessage").innerHTML=xhttp.responseText;
+				}
+			};
+			xhttp.open("POST","login.php",true);
+			//xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(data);
+		}
+		

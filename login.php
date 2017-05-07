@@ -1,7 +1,6 @@
 <?php
 
 
-	//header('Access-Control-Allow-Origin: *');
 	session_start();
 	$password = trim($_POST['password']);
 	$email= trim($_POST['email']);
@@ -19,7 +18,15 @@
 	else{
 		if(!strcmp($password,$temp)){
 			$_SESSION['login_user']= $email; 
-			echo 'Success!';
+			if(isset($_SESSION['user'])){
+				unset($_SESSION['user']);
+				echo 'Success!';
+				setcookie("debug", "", time() - 3600);
+			}
+			else{
+				echo 'Success!';
+				setcookie("debug", "", time() - 3600);
+			}
 		}
 		else
 			echo 'Incorrect Password!';

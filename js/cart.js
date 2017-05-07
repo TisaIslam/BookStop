@@ -53,7 +53,7 @@ function update(id,name) {
 	total=total+add-sub;
 	document.getElementById("total").innerHTML="BDT " +total;
 	localStorage.setItem("bill", "BDT "+total);
-	document.getElementById("temp").innerHTML=localStorage.getItem("bill");
+	//document.getElementById("temp").innerHTML=localStorage.getItem("bill");
 }
 
 

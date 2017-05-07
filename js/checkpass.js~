@@ -1,0 +1,24 @@
+function checkp() {
+			var data = new FormData();
+			data.append('password', document.getElementById("cpass").value);
+			var x=document.getElementById("cpass").value;
+			if(x.length < 6){
+				document.getElementById("showMessage").innerHTML="Password must be 6 characters or more!";
+				return;
+			}
+			xhttp= new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				console.log(this.readyState+" "+this.status+" "+xhttp.responseText);
+				if(this.readyState==4 && this.status==200){
+					
+					if(xhttp.responseText.localeCompare("Success")==0){
+						window.location.href = "changePass.html";
+					}	
+					else
+					document.getElementById("showMessage").innerHTML=xhttp.responseText;
+				}
+			};
+			
+			xhttp.open("POST","checkpass.php",true);
+			xhttp.send(data);
+}

@@ -70,7 +70,7 @@ if(!isset($_SESSION['login_user'])){
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right" id="options">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="account"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="cart"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
@@ -137,7 +137,7 @@ if(!isset($_SESSION['login_user'])){
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />
-									<img src="images/home/pricing.png"  class="pricing" alt="" />
+									
 								</div>
 							</div>
 							<div class="item">

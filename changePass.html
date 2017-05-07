@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Pending | E-Shopper</title>
+    <title>Change Password | E-Shopper</title>
+
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/price-range.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
+	<link href="css/divs.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-	<script src="js/pending.js"></script>
-	<script src="js/approval.js"></script>
-	<script src="js/option.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/checkpass.js"></script>
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -27,7 +30,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body onload="loader();">
+<body>
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -43,17 +46,17 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index"><img src="images/home/logo.png" alt="" /></a>
+							<a href="index.php"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						
 					</div>
 					<div class="col-sm-8">
-						<div class="shop-menu pull-right" id="options">
+						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="account"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="cart"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="logout"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="logout.php"><i class="fa fa-lock"></i> LogOut</a></li>
 							</ul>
 						</div>
 					</div>
@@ -87,49 +90,112 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" id="search" onkeypress="handle(event)" placeholder="Search"/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
+	
 
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Pending Approvals</li>
-				</ol>
+
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-5 col-sm-offset-3">
+				
+					<div class="signup-form">
+						<h2>To Change Password</h2>
+						<form action="" onsubmit="return false;" method="POST" >
+							<p id="showMessage" style="color:red;"></p>
+							
+							<input type="password" name="password" id="password" placeholder="New Password" required/>
+							<input type="password" id="reenter" placeholder="Confirm New Password" required/>
+							<button type="submit" name="submit" onClick="checker()" class="btn btn-default">Change Password</button><br><br><br><br><br><br>
+						</form>
+					</div>
+				</div>
 			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description">Details</td>
-							<td class="description">Type</td>
-							<td class="description">Condition</td>
-							<td class="quantity">Price(TK)</td>
-							<td class="description">Status</td>
-							<td class="description"></td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody id="body">
-						
-						
-					</tbody>
-				</table>
+	
+		</div>
+
+
+
+
+
+
+
+
+
+	<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					
+				</div>
 			</div>
 		</div>
 		
-	</section> <!--/#cart_items-->
-	
-	
-	
-	
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Policies</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Refund Policy</a></li>
+								<li><a href="#">Billing System</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Store Location</a></li>
+								<li><a href="#">Affillate Program</a></li>
+								<li><a href="#">Copyright</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
 	
 
   

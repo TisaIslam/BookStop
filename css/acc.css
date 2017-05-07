@@ -1,0 +1,14 @@
+.boxes{
+    background-color: transparent;
+    outline: none;
+    outline-style: none;
+    border-top: solid #eeeeee 1px;
+    border-left: solid #eeeeee 1px;
+    border-right: solid #eeeeee 1px;
+    border-bottom: solid #eeeeee 1px;
+    padding: 3px 10px;
+
+    width:300px; 
+    height:80px;
+    border-width:3px;
+}

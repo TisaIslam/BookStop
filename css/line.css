@@ -1,0 +1,11 @@
+.input-line {
+    background-color: transparent;
+    color: black;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid blue 1px;
+    padding: 3px 10px;
+}

@@ -12,11 +12,15 @@
 		require_once('connect.php');
 		$query='select * from sellitem where email="'.$email.'"';
         	$result = mysqli_query($dbc, $query);
+		$num = mysqli_num_rows($result);
+		if($num==0)
+			echo "You currently have no approved items";
+
 		$rows = array();
 		$ret='';
 		$i=1;
         	while ($array = mysqli_fetch_row($result)) {
-			$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="350" height="auto" alt=""></a></td>';
+			$item1='<tr><td class="cart_product"><a href=""><img src="'.$array[2].'" width="200" height="auto" alt=""></a></td>';
 			$item2=	'<td class="cart_description"><h4><a href="">'.$array[3].'</a></h4><p>'.$array[6].'</p></td>';	
 			$item3='<td class="cart_price"><p>'.$array[4].'</p></td>';
 			$item4='<td class="cart_price"><p>'.$array[5].'</p></td>';

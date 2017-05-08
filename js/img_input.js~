@@ -13,6 +13,6 @@ function getimg(input) {
 
 function changeVal(  )
 {
-        document.getElementById("subb").innerHTML="Submitting..";
+        document.getElementById("subb").innerHTML="Processing..";
 }
 

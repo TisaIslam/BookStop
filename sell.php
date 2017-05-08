@@ -142,7 +142,7 @@
 								<br><br>
 								<input name="price" id="price" type="number" placeholder="Price (Tk)" 										onkeypress="return isNumberKey(event)" required/>	
 								
-								<br><br><center><button type="submit" name="submit" class="btn 										btn-default" style="background: #5560f6; color:white">Submit Item</button></center>	
+								<br><br><center><button type="submit" name="submit" id="subb" class="btn 										btn-default" onClick="changeVal();" style="background: #5560f6; color:white">Submit Item</button></center>	
 					
 							</form>
 						</div>

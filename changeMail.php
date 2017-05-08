@@ -7,6 +7,12 @@
 	
 	$query='update user set email="'.$new.'" where email="'.$email.'"';	
 	$result = mysqli_query($dbc, $query);
+	$query='update sell set email="'.$new.'" where email="'.$email.'"';	
+	$result = mysqli_query($dbc, $query);
+	$query='update sellitem set email="'.$new.'" where email="'.$email.'"';	
+	$result = mysqli_query($dbc, $query);
+	$query='update admin set email="'.$new.'" where email="'.$email.'"';	
+	$result = mysqli_query($dbc, $query);
 	$_SESSION['login_user']= $new; 
 	echo 'Success';
         mysqli_close($dbc);

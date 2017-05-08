@@ -9,6 +9,8 @@ function create(value,days) {
 		var temp="";
 		if(document.cookie.indexOf("debug") != -1)
 		temp=readCookie("debug")+",";
+		if(temp.indexOf(value)!=-1)
+			return;
 		document.cookie = "debug"+"="+temp+value+expires+"; path=/";
 		console.log("debug"+" "+value+" "+days);
 			
@@ -46,7 +48,7 @@ function createCookie(name,value,days) {
 
 function eraseCookie(name) {
 	//document.getElementById("temp").innerHTML="erase"+name;
-	createCookie(name,"",-1);
+	createCookie(name,"done",-1);
 }
 
 function remove(id,name) {
@@ -64,5 +66,5 @@ function remove(id,name) {
 	create(val,1);
 	document.getElementById(id).innerHTML="Removed";
 	document.getElementById(id).style.color = 'red';
-	window.location.href = "cart.html";
+	window.location.href = "cart";
 }

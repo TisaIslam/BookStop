@@ -18,6 +18,9 @@
 		else{
 			$query="select * from sell";
         		$result = mysqli_query($dbc, $query);
+			$num = mysqli_num_rows($result);
+			if($num==0)
+				echo "You currently have no pending items";
 			$rows = array();
 			$ret='';
 			$i=1;

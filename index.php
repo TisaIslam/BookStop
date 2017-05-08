@@ -206,7 +206,15 @@ if(isset($_SESSION['login_user'])){
 							
 						</div><!--/category-products-->	
 						
-						
+						<div class="shipping text-center"><!--shipping-->
+							<p>Normal user:<p>
+							<p>maliha.tisa@gmail.com<p>
+							<p>Password: 123456<p>
+							<p>Admin:<p>
+							<p>admin@gmail.com<p>
+							<p>Password: admin123<p>
+						</div><!--/shipping-->
+
 						<div class="shipping text-center"><!--shipping-->
 							<img src="images/home/ship.png" alt="" />
 						</div><!--/shipping-->

@@ -12,7 +12,7 @@ function checkp() {
 				if(this.readyState==4 && this.status==200){
 					
 					if(xhttp.responseText.localeCompare("Success")==0){
-						window.location.href = "changePass.html";
+						window.location.href = "changePass";
 					}	
 					else
 					document.getElementById("showMessage").innerHTML=xhttp.responseText;
@@ -42,7 +42,7 @@ function checker() {
 				console.log(this.readyState+" "+this.status+" "+xhttp.responseText);
 				if(this.readyState==4 && this.status==200){
 					if(xhttp.responseText.localeCompare("Success")==0){
-						window.location.replace("account.html");
+						window.location.replace("account");
 					}	
 					else
 					document.getElementById("showMessage").innerHTML=xhttp.responseText;

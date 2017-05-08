@@ -27,7 +27,7 @@
 		$item2=	'<td class="cart_description"><h4><a href="">'.$array[3].'</a></h4><p>'.$array[6].'</p></td>';	
 		$item3='<td class="cart_price"><p>'.$array[4].'</p></td>';
 		$item4='<td class="cart_price"><p>'.$array[5].'</p></td>';
-		$item5='<td> <input class="cart_quantity_input" type="number" id="q'.$array[0].'"  name="1" onkeyup="update(this.id,this.name)" value="1" autocomplete="off" size="1"></td>';
+		$item5='<td> <input class="cart_quantity_input" type="number" id="q'.$array[0].'"  name="1" onkeyup="update(this.id,this.name)" oninput="update(this.id,this.name)" value="1" autocomplete="off" size="1"></td>';
 		$item6='<td class="cart_price"><p id="p'.$array[0].'" name="'.$array[7].'" >'.$array[7].'</p></td>';
 		$item7='<td><button name="'.$array[0].'" id="button'.$i.'" onClick="remove(this.id,this.name)" class="editbtn">Remove</button></td></tr>';
 		$i=$i+1;
